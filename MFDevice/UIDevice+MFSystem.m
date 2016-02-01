@@ -18,7 +18,7 @@
 
 @implementation UIDevice (MFSystem)
 
-- (float)qbase_cpuUsage
+- (float)mf_cpuUsage
 {
     kern_return_t			kr = { 0 };
     task_info_data_t		tinfo = { 0 };
@@ -69,7 +69,7 @@
     return tot_cpu;
 }
 
-- (long long)qbase_totalDiskSize
+- (long long)mf_totalDiskSize
 {
     static unsigned long long freeSpace = -1;
     if (freeSpace != -1) {
@@ -84,7 +84,7 @@
     return freeSpace;
 }
 
-- (long long)qbase_availableDiskSize
+- (long long)mf_availableDiskSize
 {
     struct statfs buf;
     unsigned long long freeSpace = -1;
@@ -95,7 +95,7 @@
     return freeSpace;
 }
 
-- (long long)qbase_totalMemoryBytes
+- (long long)mf_totalMemoryBytes
 {
     size_t size = sizeof(int);
     int results;
@@ -104,7 +104,7 @@
     return (NSUInteger) results;
 }
 
-- (long long)qbase_availableMemory
+- (long long)mf_availableMemory
 {
     task_basic_info_data_t taskInfo;
     mach_msg_type_number_t infoCount = TASK_BASIC_INFO_COUNT;
